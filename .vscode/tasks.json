@@ -1,0 +1,523 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        // Environment Setup Tasks
+        {
+            "label": "setup-environment",
+            "type": "shell",
+            "command": "node",
+            "args": [".vscode/scripts/setup-env.js"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "Set up development environment (Docker, dependencies, common module)"
+        },
+
+        // Health Check Tasks
+        {
+            "label": "health-check",
+            "type": "shell",
+            "command": "node",
+            "args": [".vscode/scripts/health-check.js"],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "Check health status of all services and infrastructure"
+        },
+
+        // Wait for Service Tasks
+        {
+            "label": "wait-for-infrastructure",
+            "type": "shell",
+            "command": "node",
+            "args": [".vscode/scripts/wait-for-service.js", "postgres", "rabbitmq"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "Wait for PostgreSQL and RabbitMQ to be ready"
+        },
+
+        {
+            "label": "wait-for-merchant",
+            "type": "shell",
+            "command": "node",
+            "args": [".vscode/scripts/wait-for-service.js", "merchant"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "Wait for Merchant Service to be ready"
+        },
+
+        {
+            "label": "wait-for-transaction",
+            "type": "shell",
+            "command": "node",
+            "args": [".vscode/scripts/wait-for-service.js", "transaction"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "Wait for Transaction Service to be ready"
+        },
+
+        {
+            "label": "wait-for-ledger",
+            "type": "shell",
+            "command": "node",
+            "args": [".vscode/scripts/wait-for-service.js", "ledger"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "Wait for Ledger Service to be ready"
+        },
+
+        // Cleanup Tasks
+        {
+            "label": "cleanup-all",
+            "type": "shell",
+            "command": "node",
+            "args": [".vscode/scripts/cleanup.js"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "Stop all services and clean workspace"
+        },
+
+        {
+            "label": "cleanup-processes-only",
+            "type": "shell",
+            "command": "node",
+            "args": [".vscode/scripts/cleanup.js", "--processes-only"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "Stop only running Spring Boot processes"
+        },
+
+        {
+            "label": "cleanup-deep",
+            "type": "shell",
+            "command": "node",
+            "args": [".vscode/scripts/cleanup.js", "--deep"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "Deep cleanup including Docker resources"
+        },
+
+        // Docker Infrastructure Tasks
+        {
+            "label": "start-docker-infrastructure",
+            "type": "shell",
+            "command": "docker-compose",
+            "args": ["up", "-d"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "Start PostgreSQL and RabbitMQ containers"
+        },
+
+        {
+            "label": "stop-docker-infrastructure",
+            "type": "shell",
+            "command": "docker-compose",
+            "args": ["down"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "Stop PostgreSQL and RabbitMQ containers"
+        },
+
+        // Maven Build Tasks
+        {
+            "label": "build-common-module",
+            "type": "shell",
+            "command": "mvn",
+            "args": ["clean", "install", "-f", "common/pom.xml"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": ["$maven"],
+            "detail": "Build the common module (required by all services)"
+        },
+
+        {
+            "label": "build-all-services",
+            "type": "shell",
+            "command": "mvn",
+            "args": ["clean", "install"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": ["$maven"],
+            "dependsOn": ["build-common-module"],
+            "detail": "Build all microservices"
+        },
+
+        {
+            "label": "build-merchant-service",
+            "type": "shell",
+            "command": "mvn",
+            "args": ["clean", "install", "-f", "merchant-service/pom.xml"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": ["$maven"],
+            "dependsOn": ["build-common-module"],
+            "detail": "Build Merchant Service"
+        },
+
+        {
+            "label": "build-transaction-service",
+            "type": "shell",
+            "command": "mvn",
+            "args": ["clean", "install", "-f", "transaction-service/pom.xml"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": ["$maven"],
+            "dependsOn": ["build-common-module"],
+            "detail": "Build Transaction Service"
+        },
+
+        {
+            "label": "build-ledger-service",
+            "type": "shell",
+            "command": "mvn",
+            "args": ["clean", "install", "-f", "ledger-service/pom.xml"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": ["$maven"],
+            "dependsOn": ["build-common-module"],
+            "detail": "Build Ledger Service"
+        },
+
+        {
+            "label": "build-payout-service",
+            "type": "shell",
+            "command": "mvn",
+            "args": ["clean", "install", "-f", "payout-service/pom.xml"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": ["$maven"],
+            "dependsOn": ["build-common-module"],
+            "detail": "Build Payout Service"
+        },
+
+        // Service Startup Tasks (with proper dependencies)
+        {
+            "label": "start-merchant-service-terminal",
+            "type": "shell",
+            "command": "export $(cat .env | xargs) && SERVER_PORT=$MERCHANT_SERVER_PORT mvn spring-boot:run -pl merchant-service",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new",
+                "showReuseMessage": false,
+                "clear": true
+            },
+            "problemMatcher": [],
+            "dependsOn": ["build-merchant-service"],
+            "detail": "Start Merchant Service in separate terminal"
+        },
+
+        {
+            "label": "start-transaction-service-terminal",
+            "type": "shell",
+            "command": "export $(cat .env | xargs) && SERVER_PORT=$TRANSACTION_SERVER_PORT mvn spring-boot:run -pl transaction-service",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new",
+                "showReuseMessage": false,
+                "clear": true
+            },
+            "problemMatcher": [],
+            "dependsOn": ["build-transaction-service"],
+            "detail": "Start Transaction Service in separate terminal"
+        },
+
+        {
+            "label": "start-ledger-service-terminal",
+            "type": "shell",
+            "command": "export $(cat .env | xargs) && SERVER_PORT=$LEDGER_SERVER_PORT mvn spring-boot:run -pl ledger-service",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new",
+                "showReuseMessage": false,
+                "clear": true
+            },
+            "problemMatcher": [],
+            "dependsOn": ["build-ledger-service"],
+            "detail": "Start Ledger Service in separate terminal"
+        },
+
+        {
+            "label": "start-payout-service-terminal",
+            "type": "shell",
+            "command": "export $(cat .env | xargs) && SERVER_PORT=$PAYOUT_SERVER_PORT mvn spring-boot:run -pl payout-service",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new",
+                "showReuseMessage": false,
+                "clear": true
+            },
+            "problemMatcher": [],
+            "dependsOn": ["build-payout-service"],
+            "detail": "Start Payout Service in separate terminal"
+        },
+
+        // Composite Tasks for Complete Workflows
+        {
+            "label": "setup-and-start-all-services",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "setup-environment",
+                "start-merchant-service-terminal",
+                "start-transaction-service-terminal",
+                "start-ledger-service-terminal",
+                "start-payout-service-terminal"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "Complete setup and start all services in proper order"
+        },
+
+        {
+            "label": "restart-all-services",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "cleanup-processes-only",
+                "setup-and-start-all-services"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "Stop running services and restart all"
+        },
+
+        // Development Utility Tasks
+        {
+            "label": "open-service-urls",
+            "type": "shell",
+            "command": "echo",
+            "args": [
+                "Service URLs:\n• Merchant Service: http://localhost:8083\n• Transaction Service: http://localhost:8082\n• Ledger Service: http://localhost:8080\n• Payout Service: http://localhost:8084\n• RabbitMQ Management: http://localhost:15672"
+            ],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "Display service URLs for easy access"
+        },
+
+        {
+            "label": "show-running-processes",
+            "type": "shell",
+            "command": "ps",
+            "args": ["aux"],
+            "options": {
+                "shell": {
+                    "executable": "/bin/bash",
+                    "args": ["-c", "ps aux | grep 'spring-boot:run' | grep -v grep || echo 'No Spring Boot processes running'"]
+                }
+            },
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "Show currently running Spring Boot processes"
+        },
+
+        // Testing Tasks
+        {
+            "label": "test-all-services",
+            "type": "shell",
+            "command": "mvn",
+            "args": ["test"],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": ["$maven"],
+            "detail": "Run tests for all services"
+        },
+
+        {
+            "label": "integration-test-workflow",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "setup-environment",
+                "build-all-services",
+                "health-check"
+            ],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "Complete integration test workflow"
+        }
+    ]
+}

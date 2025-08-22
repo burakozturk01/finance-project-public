@@ -1,0 +1,59 @@
+# Ignore everything by default
+*
+
+# But don't ignore these source and configuration files:
+
+# Java source files
+!**/*.java
+
+# Configuration files
+!**/*.yml
+!**/*.yaml
+!**/*.xml
+!**/*.properties
+!**/*.json
+!**/*.sql
+
+# Markdown files (documentation)
+!**/*.md
+
+# Maven wrapper files
+!.mvn/
+!.mvn/**
+!mvnw
+!mvnw.cmd
+
+# Docker files
+!Dockerfile
+!docker-compose.yml
+!docker-compose.yaml
+
+# Git files
+!.gitignore
+!.gitattributes
+
+# IDE configuration (VSCode)
+!.vscode/
+!.vscode/**
+
+# Project structure directories
+!*/
+!**/
+
+# Specific ignores (override the above rules)
+.env
+reports/
+.DS_Store
+
+# Maven build outputs
+target/
+**/target/
+
+# IDE files (except VSCode)
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# OS files
+Thumbs.db

@@ -1,0 +1,284 @@
+{
+    // Java Configuration
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.debug.settings.onBuildFailureProceed": true,
+    "java.debug.settings.console": "integratedTerminal",
+    "java.debug.settings.hotCodeReplace": "auto",
+    "java.debug.settings.enableRunDebugCodeLens": true,
+    "java.debug.settings.showHex": false,
+    "java.debug.settings.showStaticVariables": true,
+    "java.debug.settings.showQualifiedNames": false,
+    "java.debug.settings.maxStringLength": 0,
+    "java.debug.logLevel": "WARN",
+    
+    // Maven Configuration
+    "maven.terminal.useJavaHome": true,
+    "maven.terminal.customEnv": [
+        {
+            "environmentVariable": "JAVA_HOME",
+            "value": "${env:JAVA_HOME}"
+        }
+    ],
+    "maven.executable.path": "mvn",
+    "maven.pomfile.autoUpdateEffectivePOM": true,
+    "maven.view": "hierarchical",
+    "maven.showInExplorerContextMenu": true,
+    
+    // Spring Boot Configuration
+    "spring-boot.ls.problem.application-properties.unknown-property": "WARNING",
+    "spring-boot.ls.problem.application-yaml.unknown-property": "WARNING",
+    "spring.initializr.defaultLanguage": "Java",
+    "spring.initializr.defaultJavaVersion": "17",
+    "spring.initializr.defaultPackaging": "Jar",
+    
+    // File Associations
+    "files.associations": {
+        "*.yml": "yaml",
+        "*.yaml": "yaml",
+        "*.properties": "properties",
+        "Dockerfile*": "dockerfile",
+        "docker-compose*.yml": "dockercompose",
+        "docker-compose*.yaml": "dockercompose",
+        ".env*": "properties"
+    },
+    
+    // Editor Configuration
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "explicit",
+        "source.fixAll": "explicit"
+    },
+    "editor.rulers": [120],
+    "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 120,
+    
+    // Language-specific Settings
+    "[java]": {
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true,
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        }
+    },
+    "[yaml]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.formatOnSave": true,
+        "editor.autoIndent": "advanced"
+    },
+    "[yml]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.formatOnSave": true,
+        "editor.autoIndent": "advanced"
+    },
+    "[json]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.formatOnSave": true
+    },
+    "[javascript]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.formatOnSave": true
+    },
+    "[properties]": {
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true
+    },
+    "[dockerfile]": {
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true
+    },
+    "[dockercompose]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
+    },
+    
+    // Terminal Configuration
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.env.osx": {
+        "JAVA_HOME": "${env:JAVA_HOME}"
+    },
+    "terminal.integrated.cwd": "${workspaceFolder}",
+    "terminal.integrated.scrollback": 10000,
+    "terminal.integrated.fontSize": 13,
+    "terminal.integrated.fontFamily": "Monaco, 'Courier New', monospace",
+    
+    // Explorer Configuration
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.patterns": {
+        "*.java": "${capture}.class",
+        "pom.xml": "target/",
+        "docker-compose.yml": "docker-compose.*.yml, Dockerfile*",
+        ".env": ".env.*",
+        "application.yml": "application-*.yml, application.properties, application-*.properties"
+    },
+    
+    // Search Configuration
+    "search.exclude": {
+        "**/target": true,
+        "**/node_modules": true,
+        "**/.git": true,
+        "**/.DS_Store": true,
+        "**/logs": true,
+        "**/*.log": true,
+        "**/build": true,
+        "**/dist": true
+    },
+    
+    // Files Configuration
+    "files.exclude": {
+        "**/.git": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true
+    },
+    "files.watcherExclude": {
+        "**/target/**": true,
+        "**/node_modules/**": true,
+        "**/.git/**": true,
+        "**/logs/**": true
+    },
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    
+    // Git Configuration
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true,
+    "git.postCommitCommand": "none",
+    "git.showPushSuccessNotification": true,
+    
+    // Problems Configuration
+    "problems.decorations.enabled": true,
+    "problems.showCurrentInStatus": true,
+    
+    // Breadcrumbs Configuration
+    "breadcrumbs.enabled": true,
+    "breadcrumbs.showFiles": true,
+    "breadcrumbs.showSymbols": true,
+    
+    // IntelliSense Configuration
+    "editor.suggest.insertMode": "replace",
+    "editor.suggest.showStatusBar": true,
+    "editor.parameterHints.enabled": true,
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": false
+    },
+    
+    // Workspace-specific Settings
+    "workbench.startupEditor": "readme",
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.tree.indent": 20,
+    "workbench.list.smoothScrolling": true,
+    
+    // Extension-specific Settings
+    "extensions.ignoreRecommendations": false,
+    
+    // Docker Configuration
+    "docker.showStartPage": false,
+    
+    // YAML Configuration
+    "yaml.schemas": {
+        "https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json": [
+            "docker-compose*.yml",
+            "docker-compose*.yaml"
+        ]
+    },
+    "yaml.format.enable": true,
+    "yaml.validate": true,
+    "yaml.completion": true,
+    
+    // JSON Configuration
+    "json.schemas": [
+        {
+            "fileMatch": [
+                "package.json"
+            ],
+            "url": "https://json.schemastore.org/package.json"
+        },
+        {
+            "fileMatch": [
+                ".vscode/tasks.json"
+            ],
+            "url": "https://json.schemastore.org/task.json"
+        },
+        {
+            "fileMatch": [
+                ".vscode/launch.json"
+            ],
+            "url": "https://json.schemastore.org/launch.json"
+        }
+    ],
+    
+    // Emmet Configuration
+    "emmet.includeLanguages": {
+        "yaml": "html"
+    },
+    
+    // Auto-save and Hot Reload
+    "java.autobuild.enabled": true,
+    "java.maxConcurrentBuilds": 1,
+    "java.referencesCodeLens.enabled": true,
+    "java.implementationsCodeLens.enabled": true,
+    "java.signatureHelp.enabled": true,
+    "java.contentProvider.preferred": "fernflower",
+    
+    // Performance Settings
+    "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m",
+    
+    // Code Formatting
+    "java.format.settings.url": "",
+    "java.format.settings.profile": "",
+    "java.format.enabled": true,
+    "java.format.onType.enabled": true,
+    
+    // Testing Configuration
+    "java.test.config": {},
+    "java.test.defaultConfig": "",
+    
+    // Project-specific Recommendations
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar"
+    ],
+    
+    // Microservices Development
+    "workbench.colorCustomizations": {
+        "titleBar.activeBackground": "#1e3a8a",
+        "titleBar.activeForeground": "#ffffff",
+        "statusBar.background": "#1e3a8a",
+        "statusBar.foreground": "#ffffff"
+    },
+    
+    // Task and Launch Configuration
+    "tasks.showDecorations": true,
+    "debug.showBreakpointsInOverviewRuler": true,
+    "debug.showInlineBreakpointCandidates": true,
+    "debug.showSubSessionsInToolBar": true,
+    
+    // Integrated Terminal Profiles
+    "terminal.integrated.profiles.osx": {
+        "zsh": {
+            "path": "zsh",
+            "args": ["-l"]
+        },
+        "bash": {
+            "path": "bash",
+            "args": ["-l"]
+        }
+    }
+}

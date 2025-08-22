@@ -1,0 +1,353 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        // Individual Service Debug Configurations
+        {
+            "type": "java",
+            "name": "Debug Merchant Service",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.financesoftware.merchant.MerchantServiceApplication",
+            "projectName": "merchant-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "env": {
+                "SERVER_PORT": "8083",
+                "SPRING_PROFILES_ACTIVE": "default"
+            },
+            "vmArgs": [
+                "-Dserver.port=8083",
+                "-Dspring.profiles.active=default",
+                "-Dcom.sun.management.jmxremote",
+                "-Dcom.sun.management.jmxremote.port=64792",
+                "-Dcom.sun.management.jmxremote.authenticate=false",
+                "-Dcom.sun.management.jmxremote.ssl=false",
+                "-Dspring.jmx.enabled=true",
+                "-Djava.rmi.server.hostname=localhost",
+                "-Dspring.application.admin.enabled=true",
+                "-Dspring.boot.project.name=merchant-service"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "type": "java",
+            "name": "Debug Transaction Service",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.financesoftware.transaction.TransactionServiceApplication",
+            "projectName": "transaction-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "env": {
+                "SERVER_PORT": "8082",
+                "SPRING_PROFILES_ACTIVE": "default"
+            },
+            "vmArgs": [
+                "-Dserver.port=8082",
+                "-Dspring.profiles.active=default",
+                "-Dcom.sun.management.jmxremote",
+                "-Dcom.sun.management.jmxremote.port=64794",
+                "-Dcom.sun.management.jmxremote.authenticate=false",
+                "-Dcom.sun.management.jmxremote.ssl=false",
+                "-Dspring.jmx.enabled=true",
+                "-Djava.rmi.server.hostname=localhost",
+                "-Dspring.application.admin.enabled=true",
+                "-Dspring.boot.project.name=transaction-service"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "type": "java",
+            "name": "Debug Ledger Service",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.financesoftware.ledger.LedgerServiceApplication",
+            "projectName": "ledger-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "env": {
+                "SERVER_PORT": "8080",
+                "SPRING_PROFILES_ACTIVE": "default"
+            },
+            "vmArgs": [
+                "-Dserver.port=8080",
+                "-Dspring.profiles.active=default",
+                "-Dcom.sun.management.jmxremote",
+                "-Dcom.sun.management.jmxremote.port=64791",
+                "-Dcom.sun.management.jmxremote.authenticate=false",
+                "-Dcom.sun.management.jmxremote.ssl=false",
+                "-Dspring.jmx.enabled=true",
+                "-Djava.rmi.server.hostname=localhost",
+                "-Dspring.application.admin.enabled=true",
+                "-Dspring.boot.project.name=ledger-service"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "type": "java",
+            "name": "Debug Payout Service",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.financesoftware.payout.PayoutServiceApplication",
+            "projectName": "payout-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "env": {
+                "SERVER_PORT": "8084",
+                "SPRING_PROFILES_ACTIVE": "default"
+            },
+            "vmArgs": [
+                "-Dserver.port=8084",
+                "-Dspring.profiles.active=default",
+                "-Dcom.sun.management.jmxremote",
+                "-Dcom.sun.management.jmxremote.port=64793",
+                "-Dcom.sun.management.jmxremote.authenticate=false",
+                "-Dcom.sun.management.jmxremote.ssl=false",
+                "-Dspring.jmx.enabled=true",
+                "-Djava.rmi.server.hostname=localhost",
+                "-Dspring.application.admin.enabled=true",
+                "-Dspring.boot.project.name=payout-service"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+        // Production-like Run Configurations (without debugging)
+        {
+            "type": "java",
+            "name": "Run Merchant Service",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.financesoftware.merchant.MerchantServiceApplication",
+            "projectName": "merchant-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "env": {
+                "SERVER_PORT": "8083",
+                "SPRING_PROFILES_ACTIVE": "default"
+            },
+            "vmArgs": [
+                "-Dserver.port=8083",
+                "-Dspring.profiles.active=default"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "type": "java",
+            "name": "Run Transaction Service",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.financesoftware.transaction.TransactionServiceApplication",
+            "projectName": "transaction-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "env": {
+                "SERVER_PORT": "8082",
+                "SPRING_PROFILES_ACTIVE": "default"
+            },
+            "vmArgs": [
+                "-Dserver.port=8082",
+                "-Dspring.profiles.active=default"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "type": "java",
+            "name": "Run Ledger Service",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.financesoftware.ledger.LedgerServiceApplication",
+            "projectName": "ledger-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "env": {
+                "SERVER_PORT": "8080",
+                "SPRING_PROFILES_ACTIVE": "default"
+            },
+            "vmArgs": [
+                "-Dserver.port=8080",
+                "-Dspring.profiles.active=default"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "type": "java",
+            "name": "Run Payout Service",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.financesoftware.payout.PayoutServiceApplication",
+            "projectName": "payout-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "env": {
+                "SERVER_PORT": "8084",
+                "SPRING_PROFILES_ACTIVE": "default"
+            },
+            "vmArgs": [
+                "-Dserver.port=8084",
+                "-Dspring.profiles.active=default"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+        // Remote Debug Configurations (for attaching to running processes)
+        {
+            "type": "java",
+            "name": "Attach to Merchant Service",
+            "request": "attach",
+            "hostName": "localhost",
+            "port": 5005,
+            "projectName": "merchant-service"
+        },
+        {
+            "type": "java",
+            "name": "Attach to Transaction Service",
+            "request": "attach",
+            "hostName": "localhost",
+            "port": 5006,
+            "projectName": "transaction-service"
+        },
+        {
+            "type": "java",
+            "name": "Attach to Ledger Service",
+            "request": "attach",
+            "hostName": "localhost",
+            "port": 5007,
+            "projectName": "ledger-service"
+        },
+        {
+            "type": "java",
+            "name": "Attach to Payout Service",
+            "request": "attach",
+            "hostName": "localhost",
+            "port": 5008,
+            "projectName": "payout-service"
+        },
+        // Test Configurations
+        {
+            "type": "java",
+            "name": "Debug Tests - Merchant Service",
+            "request": "launch",
+            "mainClass": "",
+            "projectName": "merchant-service",
+            "cwd": "${workspaceFolder}/merchant-service",
+            "envFile": "${workspaceFolder}/.env",
+            "env": {
+                "SPRING_PROFILES_ACTIVE": "test"
+            },
+            "vmArgs": [
+                "-Dspring.profiles.active=test"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "type": "java",
+            "name": "Debug Tests - Transaction Service",
+            "request": "launch",
+            "mainClass": "",
+            "projectName": "transaction-service",
+            "cwd": "${workspaceFolder}/transaction-service",
+            "envFile": "${workspaceFolder}/.env",
+            "env": {
+                "SPRING_PROFILES_ACTIVE": "test"
+            },
+            "vmArgs": [
+                "-Dspring.profiles.active=test"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "type": "java",
+            "name": "Debug Tests - Ledger Service",
+            "request": "launch",
+            "mainClass": "",
+            "projectName": "ledger-service",
+            "cwd": "${workspaceFolder}/ledger-service",
+            "envFile": "${workspaceFolder}/.env",
+            "env": {
+                "SPRING_PROFILES_ACTIVE": "test"
+            },
+            "vmArgs": [
+                "-Dspring.profiles.active=test"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "type": "java",
+            "name": "Debug Tests - Payout Service",
+            "request": "launch",
+            "mainClass": "",
+            "projectName": "payout-service",
+            "cwd": "${workspaceFolder}/payout-service",
+            "envFile": "${workspaceFolder}/.env",
+            "env": {
+                "SPRING_PROFILES_ACTIVE": "test"
+            },
+            "vmArgs": [
+                "-Dspring.profiles.active=test"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        }
+    ],
+    // Compound Configurations for running multiple services
+    "compounds": [
+        {
+            "name": "Debug All Microservices",
+            "configurations": [
+                "Debug Merchant Service",
+                "Debug Transaction Service",
+                "Debug Ledger Service",
+                "Debug Payout Service"
+            ],
+            "stopAll": true,
+            "preLaunchTask": "setup-environment"
+        },
+        {
+            "name": "Run All Microservices",
+            "configurations": [
+                "Run Merchant Service",
+                "Run Transaction Service",
+                "Run Ledger Service",
+                "Run Payout Service"
+            ],
+            "stopAll": true,
+            "preLaunchTask": "setup-environment"
+        },
+        {
+            "name": "Debug Core Services (Merchant + Transaction)",
+            "configurations": [
+                "Debug Merchant Service",
+                "Debug Transaction Service"
+            ],
+            "stopAll": true,
+            "preLaunchTask": "setup-environment"
+        },
+        {
+            "name": "Debug Financial Services (Ledger + Payout)",
+            "configurations": [
+                "Debug Ledger Service",
+                "Debug Payout Service"
+            ],
+            "stopAll": true
+        },
+        {
+            "name": "Attach to All Running Services",
+            "configurations": [
+                "Attach to Merchant Service",
+                "Attach to Transaction Service",
+                "Attach to Ledger Service",
+                "Attach to Payout Service"
+            ],
+            "stopAll": false
+        }
+    ]
+}
